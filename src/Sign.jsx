@@ -7,14 +7,16 @@ export default function Sign({handleClose}) {
     const [password, setPassword] = useState('');
     
     const handleSubmit = (event) => {
-      event.preventDefault();
-      localStorage.setItem('email',JSON.parse(email));
+      if(email){
+        event.preventDefault();
+        localStorage.setItem('email',email);
+        localStorage.setItem('passward',password);
+        handleClose();
+      }
+      setEmail('');
+      setPassword('');
     };
 
-    const Email=JSON.stringify(localStorage.getItem(email));
-    if(Email){
-        setEmail(Email)
-    }
   return (
      <Grid container spacing={2}>
       <Grid item xs={12}>
